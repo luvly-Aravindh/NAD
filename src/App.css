@@ -1,0 +1,61 @@
+@font-face {
+  font-family: 'Brygada1918-Medium';
+  src: url('../src/fonts/Brygada1918-Medium.ttf') format('truetype');
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-family: 'Brygada1918-Medium' !important;
+}
+@font-face {
+  font-family: 'Brygada1918-Regular';
+  src: url('../src/fonts/Brygada1918-Regular.ttf') format('truetype');
+}
+button {
+  font-family: 'Brygada1918-Regular'!important;
+}
+p {
+  font-family: 'Brygada1918-Regular';
+}
+@font-face {
+  font-family: 'Afacad-Regula';
+  src: url('../src/fonts/Afacad-Regular.ttf') format('truetype');
+}
+.style-content{
+    font-family: 'Afacad-Regula';
+
+}
+@font-face {
+  font-family: 'SchibstedGrotesk-Regular';
+  src: url('../src/fonts/SchibstedGrotesk-Regular.ttf') format('truetype');
+}
+.style-content-2{
+    font-family: 'SchibstedGrotesk-Regular';
+
+}
+@font-face {
+  font-family: 'Brygada1918-SemiBold';
+  src: url('../src/fonts/Brygada1918-SemiBold.ttf') format('truetype');
+}
+.style-content-3{
+    font-family: 'Brygada1918-SemiBold' !important;
+
+}
+
+/* Chrome, Edge, Safari */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f4f4f2; /* light marble bg */
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #d4af37, #f6e27a, #c9a227);
+  border-radius: 10px;
+}
+
+/* Hover */
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #c9a227, #ffd700, #b8961e);
+}
