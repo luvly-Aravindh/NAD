@@ -101,6 +101,19 @@ const SolitaireSection = () => {
           ))}
         </div>
 
+        {/* CTA */}
+        <div className="mt-8 md:mt-36 flex justify-center">
+          <button
+            type="button"
+            onClick={() =>
+              document.getElementById("lead-form-section")?.scrollIntoView({ behavior: "smooth", block: "start" })
+            }
+            className="bg-black text-white px-6 md:px-8 py-3 rounded-xl font-semibold hover:bg-gray-800 transition"
+          >
+            View Collections At Home
+          </button>
+        </div>
+
       </div>
     </section>
   );

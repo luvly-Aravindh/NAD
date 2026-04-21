@@ -1,151 +1,124 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useEffect, useMemo, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 
-import ringImg from "../assets/rings.svg";
+import ringsImg from "../assets/rings.svg";
 import necklaceImg from "../assets/necklace.svg";
-import coinImg from "../assets/coins.svg";
+import coinsImg from "../assets/coins.svg";
 import mensImg from "../assets/mens.svg";
 import pendantImg from "../assets/pendant.svg";
+import p1 from "../assets/p1.png";
+import p2 from "../assets/p2.png";
+import p3 from "../assets/p3.png";
+import p4 from "../assets/p4.png";
+import p5 from "../assets/p5.png";
+import p6 from "../assets/p6.png";
+import p7 from "../assets/p7.png";
+import p8 from "../assets/p8.png";
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 40 },
-  show: (i) => ({
-    opacity: 1,
-    y: 0,
-    transition: { delay: i * 0.15, duration: 0.6, ease: "easeOut" },
-  }),
-};
+const categories = [
+  { label: "Solitaires", image: p1 },
+  { label: "Watch Jewellery", image: p8 },
+  { label: "Men's Jewellery", image: mensImg },
+  { label: "Mangalsutras", image: necklaceImg },
+  { label: "Nose Pins", image: p2 },
+  { label: "Kids Jewellery", image: p3 },
+  { label: "Gold Coins", image: coinsImg },
+  { label: "Anklets", image: p4 },
+  { label: "Pendants", image: pendantImg },
+  { label: "Necklaces", image: necklaceImg },
+  { label: "Rings", image: ringsImg },
+  { label: "Earrings", image: p5 },
+  { label: "Bangles", image: p6 },
+  { label: "Bracelets", image: p7 },
+  { label: "Gold Chains", image: necklaceImg },
+  { label: "Kada", image: p2 },
+];
 
-const CategoryGrid = () => {
+export default function CategoryGrid() {
+  const itemsPerView = 10;
+  const [startIndex, setStartIndex] = useState(0);
+
+  const visibleItems = useMemo(() => {
+    return Array.from({ length: itemsPerView }, (_, i) => {
+      const index = (startIndex + i) % categories.length;
+      return categories[index];
+    });
+  }, [startIndex]);
+
+  const handleNext = () => {
+    setStartIndex((prev) => (prev + itemsPerView) % categories.length);
+  };
+
+  const handlePrev = () => {
+    setStartIndex(
+      (prev) => (prev - itemsPerView + categories.length) % categories.length
+    );
+  };
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setStartIndex((prev) => (prev + itemsPerView) % categories.length);
+    }, 5000);
+
+    return () => clearInterval(timer);
+  }, [itemsPerView]);
+
   return (
-    <section className="bg-[#f4f4f2] py-10 md:py-16 px-4 md:px-10">
-      <div className="max-w-7xl mx-auto">
-
-        {/* Top Text */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center text-[11px] md:text-sm tracking-[0.2em] text-gray-700 mb-8 md:mb-12"
-        >
-          IGI CERTIFIED LAB-GROWN DIAMONDS · DELHI NCR · TRUSTED JEWELLERY · SINCE 2019
-        </motion.p>
-
-        {/* Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
-
-          {/* TOP CARDS */}
-          {[{
-            img: ringImg,
-            tag: "Traditional",
-            title: "Rings"
-          },{
-            img: necklaceImg,
-            tag: "Trending",
-            title: "Necklaces"
-          },{
-            img: coinImg,
-            tag: "Modern",
-            title: "Gold coins"
-          }].map((item, i) => (
-            <motion.div
-              key={i}
-              variants={fadeUp}
-              initial="hidden"
-              animate="show"
-              custom={i}
-              whileHover={{ scale: 1.03, y: -4 }}
-              className="bg-[#edebe7] rounded-md overflow-hidden h-[140px] md:h-[200px] flex items-center justify-between px-5 md:px-8 cursor-pointer"
-            >
-              <div>
-                <p className="text-[11px] text-[#2f4fa2] mb-1">
-                  {item.tag}
-                </p>
-                <h3 className="text-xl md:text-2xl font-serif text-black">
-                  {item.title}
-                </h3>
-              </div>
-
-              <motion.img
-                src={item.img}
-                alt={item.title}
-                className="h-[90%] object-contain"
-                whileHover={{ scale: 1.1 }}
-                transition={{ duration: 0.4 }}
-              />
-            </motion.div>
-          ))}
-
-          {/* MEN'S BIG CARD */}
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            animate="show"
-            custom={3}
-            whileHover={{ scale: 1.02 }}
-            className="relative md:col-span-2 h-[220px] md:h-[360px] rounded-md overflow-hidden cursor-pointer"
+    <section className="bg-[#f4f4f4] py-10 md:py-14 px-4 md:px-8">
+      <div className="mx-auto max-w-7xl">
+        <div className="mb-6 flex items-center justify-end gap-3">
+          <button
+            type="button"
+            onClick={handlePrev}
+            className="h-10 w-10 rounded-full border border-[#dccfd3] bg-white text-[#8f8a92] shadow-sm transition hover:bg-[#f7eff2]"
+            aria-label="Previous categories"
           >
-            <motion.img
-              src={mensImg}
-              alt="Mens"
-              className="w-full h-full object-cover"
-              whileHover={{ scale: 1.08 }}
-              transition={{ duration: 0.5 }}
-            />
-
-            <div className="absolute inset-0 bg-black/5"></div>
-
-            <motion.div
-              whileHover={{ y: -4 }}
-              className="absolute bottom-6 left-6 md:bottom-10 md:left-10"
-            >
-              <p className="text-[11px] text-[#2f4fa2] mb-1">
-                Big Deal
-              </p>
-              <h3 className="text-xl md:text-3xl font-serif text-black leading-snug">
-                Men’s collection <br />
-                rings and bracelets
-              </h3>
-            </motion.div>
-          </motion.div>
-
-          {/* PENDANT CARD */}
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            animate="show"
-            custom={4}
-            whileHover={{ scale: 1.02 }}
-            className="relative h-[220px] md:h-[360px] rounded-md overflow-hidden cursor-pointer"
+            &larr;
+          </button>
+          <button
+            type="button"
+            onClick={handleNext}
+            className="h-10 w-10 rounded-full border border-[#dccfd3] bg-white text-[#8f8a92] shadow-sm transition hover:bg-[#f7eff2]"
+            aria-label="Next categories"
           >
-            <motion.img
-              src={pendantImg}
-              alt="Pendant"
-              className="w-full h-full object-cover"
-              whileHover={{ scale: 1.08 }}
-              transition={{ duration: 0.5 }}
-            />
-
-            <div className="absolute inset-0 bg-black/5"></div>
-
-            <motion.div
-              whileHover={{ y: -4 }}
-              className="absolute bottom-6 left-6 md:bottom-10 md:left-10"
-            >
-              <p className="text-[11px] text-[#2f4fa2] mb-1">
-                Big Deal
-              </p>
-              <h3 className="text-xl md:text-2xl font-serif text-black">
-                For Pendant
-              </h3>
-            </motion.div>
-          </motion.div>
-
+            &rarr;
+          </button>
         </div>
 
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={startIndex}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.5 }}
+            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 md:gap-6"
+          >
+            {visibleItems.map((item, i) => (
+              <motion.article
+                key={`${item.label}-${i}`}
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.35, delay: i * 0.02 }}
+                whileHover={{ y: -4 }}
+                className="group flex flex-col items-center"
+              >
+                <div className="w-full h-[150px] md:h-[180px] rounded-3xl border border-[#e8dce0] bg-[#f7eff2] shadow-[0_8px_20px_rgba(0,0,0,0.04)] flex items-center justify-center p-5">
+                  <img
+                    src={item.image}
+                    alt={item.label}
+                    className="h-full w-auto max-w-full object-contain transition-transform duration-300 group-hover:scale-105"
+                  />
+                </div>
+                <p className="mt-3 text-center text-sm md:text-lg font-medium text-[#9d98a1] leading-tight">
+                  {item.label}
+                </p>
+              </motion.article>
+            ))}
+          </motion.div>
+        </AnimatePresence>
+        
       </div>
     </section>
   );
-};
-
-export default CategoryGrid;
+}

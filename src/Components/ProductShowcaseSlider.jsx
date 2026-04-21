@@ -121,7 +121,13 @@ export default function ProductShowcaseSlider() {
                 {current.price}
               </p>
 
-              <button className="px-6 py-3 bg-white border shadow-sm hover:shadow-md transition">
+              <button
+                type="button"
+                onClick={() =>
+                  document.getElementById("lead-form-section")?.scrollIntoView({ behavior: "smooth", block: "start" })
+                }
+                className="px-6 py-3 bg-white border shadow-sm hover:shadow-md transition"
+              >
                 Explore All Collections
               </button>
             </div>

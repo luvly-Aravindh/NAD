@@ -8,7 +8,7 @@ import badge from "../assets/badge.png";
 const CertifiedBrilliance = () => {
   return (
     <section
-      className="w-full py-14 md:py-16 px-4 md:px-10 bg-cover bg-center"
+      className="w-full py-6 md:py-16 px-4 md:px-10 bg-cover bg-center"
       style={{ backgroundImage: `url(${bgMarble})` }}
     >
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 items-center gap-8 md:gap-10">

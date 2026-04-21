@@ -24,7 +24,7 @@ const fadeUp = {
 
 export default function BestSellingCollections() {
   return (
-    <section className="bg-[#f3f3f3] px-2 sm:px-6 md:px-12 py-16 md:py-24">
+    <section className="bg-[#f3f3f3] px-2 sm:px-6 md:px-12 py-10 md:py-16">
       <div className="max-w-7xl mx-auto">
 
         {/* Header */}

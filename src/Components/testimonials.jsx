@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-
+import logo from "../assets/logo.png";
 import profile1 from "../assets/profile.png";
 import profile2 from "../assets/profile-2.png";
 import profile3 from "../assets/profile-3.png";
@@ -109,32 +109,65 @@ const TestimonialSection = () => {
         </div>
 
         {/* BOTTOM CTA TEXT */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          viewport={{ once: true }}
-          className="max-w-2xl"
-        >
-          <p className="text-sm sm:text-lg md:text-xl text-[#2f4fa2] mb-2">
-            Choose Your Diamond from Home
-          </p>
+   <section className="py-16 md:py-24 bg-white">
+  <div className="max-w-7xl mx-auto px-6 lg:px-12">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      
+      {/* Left Content */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7 }}
+        viewport={{ once: true }}
+        className="max-w-2xl"
+      >
+        <p className="text-sm sm:text-lg md:text-xl text-[#2f4fa2] mb-2 tracking-wide">
+          Choose Your Diamond from Home
+        </p>
 
-          <h3 className="text-xl sm:text-2xl md:text-5xl font-serif text-black mb-4 leading-tight">
-            Try it before you own it.
-          </h3>
+        <h3 className="text-2xl sm:text-4xl md:text-5xl font-serif text-black mb-6 leading-tight">
+          Try it before
+          <span className="block text-[#2f4fa2]">you own it.</span>
+        </h3>
 
-          <p className="text-sm sm:text-base md:text-xl text-gray-600 leading-relaxed mb-4">
-            Skip the showroom. Skip the pressure.
-            <br />
-            We bring up to 10 of your shortlisted diamond pieces straight to your home
-            so you can experience them where it matters most.
-          </p>
+        <p className="text-sm sm:text-base md:text-xl text-gray-600 leading-relaxed mb-6">
+          Skip the showroom. Skip the pressure.
+          <br />
+          We bring up to 10 of your shortlisted diamond pieces straight to your home
+          so you can experience them where it matters most.
+        </p>
 
-          <p className="text-sm sm:text-base md:text-xl text-black">
-            • No deposit &nbsp; • No risk &nbsp; • Just clarity
-          </p>
-        </motion.div>
+        <p className="text-sm sm:text-base md:text-lg text-black font-medium tracking-wide">
+          • No deposit &nbsp; • No risk &nbsp; • Just clarity
+        </p>
+      </motion.div>
+
+      {/* Right Logo Display */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.9 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+        className="relative flex justify-center items-center"
+      >
+        {/* Glow background */}
+        <div className="absolute w-64 h-64 md:w-80 md:h-80 rounded-full bg-[#2f4fa2]/10 blur-3xl" />
+
+        {/* Decorative card */}
+        <div className="relative bg-white shadow-2xl rounded-3xl p-8 md:p-12 border border-gray-100">
+          <img
+            src={logo}
+            alt="Brand Logo"
+            className="w-32 sm:w-40 md:w-52 object-contain"
+          />
+
+          <div className="absolute -top-3 -right-3 w-6 h-6 rounded-full bg-[#2f4fa2]" />
+          <div className="absolute -bottom-3 -left-3 w-4 h-4 rounded-full bg-gray-200" />
+        </div>
+      </motion.div>
+    </div>
+  </div>
+</section>
 
       </div>
     </section>
